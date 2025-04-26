@@ -1,1 +1,68 @@
-[]
+[
+  {
+    "barcode": "4791034015424",
+    "name": "Krisco Snack",
+    "price": "5.99",
+    "quantity": 0
+  },
+  {
+    "barcode": "4791052500070",
+    "name": "Zesta 100 Tea Bags",
+    "price": "6.99",
+    "quantity": 0
+  },
+  {
+    "barcode": "4791034042215",
+    "name": "Maliban Smart Cream",
+    "price": "3.99",
+    "quantity": 0
+  },
+  {
+    "barcode": "47910",
+    "name": "Zeaa",
+    "price": "1.00",
+    "quantity": 0
+  },
+  {
+    "barcode": "4791085011079",
+    "name": "Anchor Full Cream",
+    "price": "10.00",
+    "quantity": 0
+  },
+  {
+    "barcode": "479",
+    "name": "Aaa",
+    "price": "19.99",
+    "quantity": 0
+  },
+  {
+    "barcode": "4792192011211",
+    "name": "Tiara Layer Cake",
+    "price": "4.99",
+    "quantity": 0
+  },
+  {
+    "barcode": "4791034011013",
+    "name": "Maliban Biscuits",
+    "price": "5.99",
+    "quantity": 0
+  },
+  {
+    "barcode": "478034020046",
+    "name": "Maliban Nice",
+    "price": "1.99",
+    "quantity": 0
+  },
+  {
+    "barcode": "4791034017015",
+    "name": "Maliban Lemon Puff",
+    "price": "1.50",
+    "quantity": 0
+  },
+  {
+    "barcode": "CLOVER_GIFT_CARD",
+    "name": "Gift card",
+    "price": "0.00",
+    "quantity": 0
+  }
+]
