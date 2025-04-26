@@ -1,7 +1,7 @@
 name: Clover Sync to products.json
 
 on:
-  workflow_dispatch: # allows you to trigger it manually
+  workflow_dispatch:
   schedule:
     - cron: '0 * * * *' # runs every hour
 
@@ -32,5 +32,5 @@ jobs:
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
           git add public/products.json
-          git commit -m "Auto-update products.json from Clover" || echo "No changes to commit"
+          git commit -m "Auto-update products.json from Clover with inventory" || echo "No changes to commit"
           git push
