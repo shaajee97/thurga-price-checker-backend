@@ -28,11 +28,12 @@ jobs:
           CLOVER_API_TOKEN: ${{ secrets.CLOVER_API_TOKEN }}
 
       - name: Commit and push changes
-    run: |
+  run: |
     git config --global user.name 'github-actions'
     git config --global user.email 'github-actions@github.com'
-    git pull --rebase
+    git fetch origin
     git add public/products.json
     git commit -m "Auto-update products.json from Clover with inventory" || echo "No changes to commit"
-    git push
+    git push --force
+
 
