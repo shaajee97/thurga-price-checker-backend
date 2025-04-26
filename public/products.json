@@ -1,1 +1,68 @@
-[]
+[
+  {
+    "name": "Krisco Snack",
+    "price": 5.99,
+    "code": "4791034015424",
+    "inventory": null
+  },
+  {
+    "name": "Zesta 100 Tea Bags",
+    "price": 6.99,
+    "code": "4791052500070",
+    "inventory": null
+  },
+  {
+    "name": "Maliban Smart Cream",
+    "price": 3.99,
+    "code": "4791034042215",
+    "inventory": null
+  },
+  {
+    "name": "Zeaa",
+    "price": 1,
+    "code": "47910",
+    "inventory": null
+  },
+  {
+    "name": "Anchor Full Cream",
+    "price": 10,
+    "code": "4791085011079",
+    "inventory": null
+  },
+  {
+    "name": "Aaa",
+    "price": 19.99,
+    "code": "479",
+    "inventory": null
+  },
+  {
+    "name": "Tiara Layer Cake",
+    "price": 4.99,
+    "code": "4792192011211",
+    "inventory": null
+  },
+  {
+    "name": "Maliban Biscuits",
+    "price": 5.99,
+    "code": "4791034011013",
+    "inventory": null
+  },
+  {
+    "name": "Maliban Nice",
+    "price": 1.99,
+    "code": "478034020046",
+    "inventory": null
+  },
+  {
+    "name": "Maliban Lemon Puff",
+    "price": 1.5,
+    "code": "4791034017015",
+    "inventory": null
+  },
+  {
+    "name": "Gift card",
+    "price": 0,
+    "code": "CLOVER_GIFT_CARD",
+    "inventory": null
+  }
+]
