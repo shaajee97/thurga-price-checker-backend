@@ -17,7 +17,8 @@ jobs:
         with:
           node-version: '20'
 
-      # REMOVE "Install dependencies" (no npm install)
+      - name: Install axios manually
+        run: npm install axios
 
       - name: Fetch Clover Inventory
         run: node clover-fetch.js
