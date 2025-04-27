@@ -23,9 +23,8 @@ jobs:
       - name: Fetch Clover Inventory
         run: node clover-fetch.js
         env:
-  API_TOKEN: ${{ secrets.CLOVER_API_TOKEN }}
-  MERCHANT_ID: ${{ secrets.CLOVER_MERCHANT_ID }}
-
+          API_TOKEN: ${{ secrets.CLOVER_API_TOKEN }}
+          MERCHANT_ID: ${{ secrets.CLOVER_MERCHANT_ID }}
 
       - name: Push updated products.json to frontend repo
         run: |
