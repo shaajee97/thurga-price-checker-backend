@@ -1,0 +1,13 @@
+{
+  "name": "thurga-price-checker-backend",
+  "version": "1.0.0",
+  "description": "Fetch Clover inventory and update products.json automatically",
+  "main": "clover-fetch.js",
+  "scripts": {
+    "start": "node clover-fetch.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "dotenv": "^16.0.0"
+  }
+}
