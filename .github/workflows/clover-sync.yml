@@ -1,36 +1,36 @@
 name: Clover Sync to products.json
 
 on:
-  schedule:
-    - cron: '0 * * * *' # Runs every hour
   workflow_dispatch:
+  schedule:
+    - cron: '0 * * * *'  # Every hour
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout backend repo
-      uses: actions/checkout@v3
+      - name: Checkout backend repo
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
 
-    - name: Install dependencies
-      run: npm install
+      # REMOVE "Install dependencies" (no npm install)
 
-    - name: Fetch Clover Inventory
-      run: node clover-fetch.js
+      - name: Fetch Clover Inventory
+        run: node clover-fetch.js
+        env:
+          CLOVER_API_TOKEN: ${{ secrets.CLOVER_API_TOKEN }}
+          CLOVER_MERCHANT_ID: ${{ secrets.CLOVER_MERCHANT_ID }}
 
-    - name: Push updated products.json to frontend repo
-      run: |
-        git config --global user.email "you@example.com"
-        git config --global user.name "github-actions"
-        git clone https://x-access-token:${{ secrets.FRONTEND_REPO_PAT }}@github.com/shaajee97/thurga-price-checker-frontend.git frontend-repo
-        cp public/products.json frontend-repo/public/products.json
-        cd frontend-repo
-        git add public/products.json
-        git commit -m "Auto-update products.json from backend to frontend"
-        git push origin main
+      - name: Push updated products.json to frontend repo
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add public/products.json
+          git commit -m "Update products.json from Clover inventory"
+          git push
+        env:
+          GIT_TOKEN: ${{ secrets.PUSH_TOKEN }}
