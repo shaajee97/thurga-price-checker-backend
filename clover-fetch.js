@@ -1,10 +1,10 @@
-const fs = require("fs");
-const axios = require("axios");
-require("dotenv").config();
+const fs = require('fs');
+const axios = require('axios');
+require('dotenv').config();
 
 const CLOVER_API_URL = "https://api.clover.com/v3/merchants";
-const MERCHANT_ID = process.env.MERCHANT_ID;    // fixed env var name
-const API_TOKEN = process.env.API_TOKEN;        // fixed env var name
+const MERCHANT_ID = process.env.CLOVER_MERCHANT_ID;
+const API_TOKEN = process.env.CLOVER_API_TOKEN;
 
 async function fetchInventory() {
   try {
@@ -24,10 +24,10 @@ async function fetchInventory() {
       inventory: item.stockCount || null,
     }));
 
-    fs.writeFileSync("public/products.json", JSON.stringify(items, null, 2));
-    console.log("✅ Inventory successfully written to public/products.json");
+    fs.writeFileSync('public/products.json', JSON.stringify(items, null, 2));
+    console.log('✅ Inventory successfully written to public/products.json');
   } catch (error) {
-    console.error("❌ Failed to fetch Clover inventory:", error.message);
+    console.error('❌ Failed to fetch Clover inventory:', error.message);
     process.exit(1);
   }
 }
