@@ -3,8 +3,8 @@ const axios = require("axios");
 require("dotenv").config();
 
 const CLOVER_API_URL = "https://api.clover.com/v3/merchants";
-const MERCHANT_ID = process.env.MERCHANT_ID;
-const API_TOKEN = process.env.API_TOKEN;
+const MERCHANT_ID = process.env.MERCHANT_ID;    // fixed env var name
+const API_TOKEN = process.env.API_TOKEN;        // fixed env var name
 
 async function fetchInventory() {
   try {
