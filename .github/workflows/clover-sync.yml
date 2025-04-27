@@ -3,7 +3,7 @@ name: Clover Sync to products.json
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 * * * *'  # Every hour
+    - cron: '0 * * * *' # Every hour
 
 jobs:
   build:
@@ -17,22 +17,21 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install axios manually
-        run: npm install axios
+      - name: Install dependencies
+        run: npm install axios dotenv
 
       - name: Fetch Clover Inventory
         run: node clover-fetch.js
         env:
-          API_TOKEN: ${{ secrets.CLOVER_API_TOKEN }}
-          MERCHANT_ID: ${{ secrets.CLOVER_MERCHANT_ID }}
+          CLOVER_API_TOKEN: ${{ secrets.CLOVER_API_TOKEN }}
+          CLOVER_MERCHANT_ID: ${{ secrets.CLOVER_MERCHANT_ID }}
 
       - name: Push updated products.json to frontend repo
-  run: |
-    git config --global user.name 'github-actions[bot]'
-    git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-    git add public/products.json
-    git commit -m "Update products.json from Clover inventory" || echo "No changes to commit"
-    git push
-  env:
-    GIT_TOKEN: ${{ secrets.PUSH_TOKEN }}
-
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add public/products.json
+          git commit -m "Update products.json from Clover inventory" || echo "No changes to commit"
+          git push
+        env:
+          GIT_TOKEN: ${{ secrets.PUSH_TOKEN }}
