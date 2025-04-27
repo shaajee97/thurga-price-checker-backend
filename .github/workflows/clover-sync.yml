@@ -1,38 +1,36 @@
 name: Clover Sync to products.json
 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 * * * *' # Runs every hour
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+    - name: Checkout backend repo
+      uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
 
-      - name: Install dependencies
-        run: npm install axios dotenv
+    - name: Install dependencies
+      run: npm install
 
-      - name: Fetch Clover inventory and update products.json
-        env:
-          MERCHANT_ID: ${{ secrets.CLOVER_MERCHANT_ID }}
-          API_TOKEN: ${{ secrets.CLOVER_API_TOKEN }}
-        run: node clover-fetch.js
+    - name: Fetch Clover Inventory
+      run: node clover-fetch.js
 
-      - name: Commit and push changes
-        env:
-          TOKEN: ${{ secrets.PUSH_TOKEN }}
-        run: |
-          git config --global user.name 'github-actions'
-          git config --global user.email 'github-actions@github.com'
-          git pull origin main --rebase || true
-          git add public/products.json
-          git commit -m "Auto-update products.json from Clover with inventory" || echo "No changes to commit"
-          git push https://x-access-token:${TOKEN}@github.com/shaajee97/thurga-price-checker1.git main --force
+    - name: Push updated products.json to frontend repo
+      run: |
+        git config --global user.email "you@example.com"
+        git config --global user.name "github-actions"
+        git clone https://x-access-token:${{ secrets.FRONTEND_REPO_PAT }}@github.com/shaajee97/thurga-price-checker-frontend.git frontend-repo
+        cp public/products.json frontend-repo/public/products.json
+        cd frontend-repo
+        git add public/products.json
+        git commit -m "Auto-update products.json from backend to frontend"
+        git push origin main
