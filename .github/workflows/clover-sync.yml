@@ -32,13 +32,13 @@ jobs:
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-        git clone https://x-access-token:${{ secrets.TOKEN }}@github.com/shaajee97/thurga-price-checker-frontend.git frontend-repo
+        git clone https://x-access-token:${{ secrets.PUSH_TOKEN }}@github.com/shaajee97/thurga-price-checker-frontend.git frontend-repo
         cp public/products.json frontend-repo/public/products.json
 
         cd frontend-repo
         git add public/products.json
 
-        # Check if there are any changes before committing
+        # Check if any changes exist before committing
         if git diff --cached --quiet; then
           echo "✅ No changes to commit. Skipping push."
         else
