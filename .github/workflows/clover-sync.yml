@@ -32,15 +32,20 @@ jobs:
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
+        # Clone frontend repo
         git clone https://x-access-token:${{ secrets.PUSH_TOKEN }}@github.com/shaajee97/thurga-price-checker-frontend.git frontend-repo
+
+        # Copy products.json from backend to frontend repo
         cp public/products.json frontend-repo/public/products.json
 
+        # Navigate to frontend repo and check for changes
         cd frontend-repo
         git add public/products.json
 
-        # Check if any changes exist before committing
+        # Check if there are actual changes before committing
         if git diff --cached --quiet; then
           echo "✅ No changes to commit. Skipping push."
+          exit 0
         else
           git commit -m "Update products.json from Clover inventory"
           git push
